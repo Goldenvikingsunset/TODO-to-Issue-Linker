@@ -127,8 +127,8 @@ class GitHubService {
   private parseGitHubUrl(url: string): GitHubRepo | null {
     // Handle various GitHub URL formats
     const patterns = [
-      /github\\.com[:/]([^/]+)\\/([^/]+?)(?:\\.git)?$/,  // SSH and HTTPS
-      /github\\.com\\/([^/]+)\\/([^/]+)/                  // Browser URL
+      /github\.com[:\/]([^\/]+)\/([^\/]+?)(?:\.git)?$/,  // SSH and HTTPS
+      /github\.com\/([^\/]+)\/([^\/]+)/                  // Browser URL
     ];
 
     for (const pattern of patterns) {
@@ -136,7 +136,7 @@ class GitHubService {
       if (match) {
         return {
           owner: match[1],
-          repo: match[2].replace(/\\.git$/, '')
+          repo: match[2].replace(/\.git$/, '')
         };
       }
     }
